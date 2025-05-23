@@ -1,12 +1,14 @@
 // /api/youtube.js
 import axios from "axios";
-
+import dotenv from "dotenv";
+dotenv.config();
 /**
  * Vercel Serverless API Function
  */
 export default async function handler(req, res) {
   const query = req.query.q;
   const API_KEY = process.env.YOUTUBE_API_KEY;
+  console.log("🔑 API_KEY:", API_KEY);
 
   if (!query) {
     return res.status(400).json({ error: "검색어가 필요합니다." });
