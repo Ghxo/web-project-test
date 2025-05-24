@@ -13,12 +13,12 @@ const PlaylistSelector = ({ selected, onSelect, onCreate }) => {
   useEffect(() => {
     refreshPlaylists();
   }, []);
-
+  // indexedDB 에서 이름들 가져오고 저장
   const refreshPlaylists = async () => {
     const names = await getAllPlaylistNames();
     setPlaylists(names);
   };
-
+  // 플레이리스트 생성
   const handleCreate = async () => {
     if (!newName) return;
     await savePlaylist(newName, []);
@@ -26,7 +26,7 @@ const PlaylistSelector = ({ selected, onSelect, onCreate }) => {
     refreshPlaylists();
     onCreate(newName); // 생성 시 자동 선택
   };
-
+  // 플레이리스트 삭제
   const handleDelete = async (name) => {
     await deletePlaylist(name);
     refreshPlaylists();

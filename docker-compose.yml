@@ -1,9 +1,23 @@
-version: '3'
+# version: '3'
+
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "5173:80"
+#     container_name: youtube-nginx
+#     restart: always
 
 services:
-  web:
-    build: .
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nginx-proxy2
     ports:
-      - "5173:80"
-    container_name: youtube-nginx
-    restart: always
+      - "8888:80"
+    networks:
+      - dweb-network
+networks:
+  dweb-network:
+    driver: bridge

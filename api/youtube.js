@@ -2,9 +2,9 @@
 import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
-/**
- * Vercel Serverless API Function
- */
+
+ //Vercel Serverless API Function
+ 
 export default async function handler(req, res) {
   const query = req.query.q;
   const API_KEY = process.env.YOUTUBE_API_KEY;
